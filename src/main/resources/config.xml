@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <advisor className="AdminController" methodName="login" adapter="me.islim.adapter.AddTimerAdapter"></advisor>
+    <advisor className="AdminController" methodName="listAdmin" adapter="me.islim.adapter.AddTimerAdapter"></advisor>
+    <advisor className="Exception" methodName="init" adapter="me.islim.adapter.AddExceptionAdapter"></advisor>
+    <advisor className="SqlSessionTemplate" methodName="select" adapter="me.islim.adapter.AddSQLAdapter"></advisor>
+</config>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="180">
+    <properties>
+        <property name="LOG_HOME">/data1/logs</property>
+        <property name="LOG_NAME">myagent</property>
+    </properties>
+    <Appenders>
+        <RollingFile name="logRollingFile" fileName="${LOG_HOME}/${LOG_NAME}.log"
+                filePattern="${LOG_HOME}/$${date:yyyy-MM}/${LOG_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout
+                    pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50 MB" />
+            </Policies>
+        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="me.islim" level="DEBUG"/>
+        <Logger name="java.sql" level="INFO"/>
+        <Logger name="org.springframework" level="INFO"/>
+        <Logger name="org.mybatis.spring" level="DEBUG"/>
+        <Logger name="org.apache.http" level="INFO"/>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="logRollingFile" />
+        </Root>
+    </Loggers>
+</Configuration>
